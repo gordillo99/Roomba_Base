@@ -131,6 +131,7 @@ void joystick1_task()
 		} else {
 			PORTB &= ~(1<<PB3);
 		}
+
 		Task_Next();
 	}
 }
@@ -147,10 +148,10 @@ void joystick2_task()
 
 		if (sensorValue3 < 3 && sensorValue3 >= 0 && roomba_dir1 != backward) {
 			roomba_dir1 = backward;
-			//uart_putchar((char)roomba1back);
+			uart_putchar((char)roomba1back);
 		} else if (sensorValue3 < 8 && sensorValue3 > 4 && roomba_dir1 != forward) {
 			roomba_dir1 = forward;
-			//uart_putchar((char)roomba1for);
+			uart_putchar((char)roomba1for);
 		} else if((sensorValue3 == 3 || sensorValue3 == 4) && roomba_dir1 != stopped) {
 			roomba_dir1 = stopped;
 			uart_putchar((char)roomba1stop);
@@ -166,6 +167,7 @@ void joystick2_task()
 			roomba_dir2 = stopped;
 			uart_putchar((char)roomba2stop);
 		}
+
 
 		Task_Next();
 	}
