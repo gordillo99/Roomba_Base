@@ -1,6 +1,5 @@
-#include "uart.h"
-#include "os.h"
 #include <avr/io.h>
+#include "uart.h"
 
 /**
  * UART0 Handler
@@ -15,7 +14,7 @@ void uart_init(){
     PRR1 &= ~(1 << PRUSART2);
 
     // 51 = 19.2k, 103 = 9600
-    UBRR2 = 51;
+    UBRR2 = 103;
 
     // Clear USART Transmit complete flag, normal USART transmission speed
     UCSR2A = (1 << TXC2) | (0 << U2X2);
